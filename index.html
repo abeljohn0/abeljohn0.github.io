@@ -73,7 +73,7 @@
       max-width: 1200px;
       height: 100vh;
       margin: 20px auto;
-      background-color: rgba(255, 255, 255, 0.5); /* More transparent to see stars */
+      background-color: rgba(255, 255, 255, 0.187); /* More transparent to see stars */
       border-radius: 10px;
       overflow-y: auto;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -163,6 +163,7 @@
     }
     h2 {
       margin-top: 0;
+      color: #fff;
     }
 
     /* Horizontal slider container */
@@ -219,7 +220,8 @@
 
     /* Card styles */
     .card {
-      background-color: #fff;
+      background-color: #675f5f;
+      color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       padding: 20px;
@@ -289,6 +291,66 @@
         gap: 10px;
       }
     }
+  /* Modal Overlay Styles */
+  .media-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    }
+    .media-modal.active {
+    display: flex;
+    }
+    .modal-content {
+    width: 75%;
+    height: 75%;
+    position: relative;
+    background: #000;
+    }
+    .modal-content img,
+    .modal-content video,
+    .modal-content iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    }
+    .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1010;
+    }
+    .modal-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none;
+    font-size: 48px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1010;
+    }
+    .modal-arrow-left {
+    left: 20px;
+    }
+    .modal-arrow-right {
+    right: 20px;
+    }
   </style>
 </head>
 <body>
@@ -313,11 +375,13 @@
       <div class="hero-text">
         <h2>Hi, I'm Abel</h2>
         <p>
-          I'm a second-year software engineer + designer studying AI + HCI at Stanford. I’m researching how human feedback and user preferences can shape personalized learning experiences, helping AI systems and end-users learn together.
+          I'm a senior at Stanford studying AI+Systems, with a passion for designing AI systems that drive new forms of technological expression.
           <br><br>
-          I craft elegant, interactive interfaces from 0→1. My goal is to reduce information gaps and barriers in education and career development.
+          As an intern on the Incubation team at Apple, I worked on a feature that shipped in iOS 18 and developed an award-winning app within the digital wellbeing space. Last spring, I received VC funding to explore other moonshot ideas.
           <br><br>
-          You can reach me via Twitter or email at <strong>abeljohn@stanford.edu</strong>.
+          In my free time, I enjoy playing basketball with friends and listening to the "How I Built This by Guy Raz".
+          <br><br>
+          You can reach me via email at <strong>abeljohn (at) stanford (dot) edu</strong>.
         </p>
       </div>
       <div class="hero-photo">
@@ -348,7 +412,7 @@
             </div>
             <h3>Apple - Incubation Intern</h3>
             <p>
-              Prototyped new moonshot features for iOS. 
+              Prototyped a new approach to digital wellbeing for iOS. 
               My final presentation was showcased to top executives including SVP Craig Federighi.
             </p>
           </div>
@@ -366,7 +430,7 @@
             </div>
             <h3>Apple - Input Experience Intern</h3>
             <p>
-              Developed the first head gesture features for AirPods, featured at WWDC and set to debut in iOS 18.
+              Developed the first prototype of the head gesture features for AirPods; feature debuted in iOS 18.
             </p>
           </div>
 
@@ -395,7 +459,7 @@
             </div>
             <h3>Cardinal Robotics</h3>
             <p>
-              Engineered a BLE to WiFi Bridge for hospital data, piloting the product within the Stanford Hospital Network.
+              Engineered a BLE to WiFi Bridge for hospital data, piloted the product within the Stanford Hospital Network.
             </p>
           </div>
         </div>
@@ -422,7 +486,7 @@
             </div>
             <h3>Real Estate Search Engine</h3>
             <p>
-              to be added here...
+              Built for Treehacks 2023. The website enabled users to search for a house that matched the specifics of their natural language query, and enabled further followups with a housing-specific chat agent.
             </p>
           </div>
           <div class="card" data-images='[
@@ -467,76 +531,52 @@
         <button class="slider-arrow arrow-left" onclick="scrollSlider(this, -1)">⟨</button>
         
         <div class="slider">
-          <div class="card" data-images='[
-            "https://via.placeholder.com/600x400.png?text=NYT+Article"
-          ]'>
+          <div class="card">
             <div class="card-image-container">
-              <img src="https://via.placeholder.com/600x400.png?text=NYT+Article" alt="NYT Article">
-              <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
-              <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
+              <img src="head_gestures.png" alt="Tom's Guide">
             </div>
-            <h3>Published Author</h3>
+            <h3>AirPods Head Gestures Feature Reveal</h3>
+            <p>Highlighted by Tom's Guide for new ways of interfacing with the airpods.</p>
+            <a href="https://www.tomsguide.com/audio/apple-airpods-finally-have-a-way-to-remove-background-noise-from-your-phone-calls-heres-how" target="_blank">Learn More</a>
+          </div>
+          <div class="card">
+            <div class="card-image-container">
+                <iframe src="https://www.youtube.com/embed/v2Ka_khLo9c?si=wAdE4fwp0ni4kPuy" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Vinod Khosla Fireside Chat</h3>
+            <p>A fireside chat I hosted at the GSB.</p>
+            <a href="https://www.youtube.com/watch?v=v2Ka_khLo9c" target="_blank">Watch Video</a>
+          </div>
+          <div class="card">
+            <div class="card-image-container">
+              <img src="nyt_1.jpeg" alt="NYT Article">
+            </div>
+            <h3>NYT Published Author</h3>
             <p>Featured in The New York Times for "Collar the Cat".</p>
             <a href="https://www.nytimes.com/2020/06/17/learning/collar-the-cat.html" target="_blank">Read Article</a>
           </div>
-          <div class="card" data-images='[
-            "https://via.placeholder.com/600x400.png?text=YouTube+Keynote"
-          ]'>
+          <!-- <div class="card">
             <div class="card-image-container">
-              <img src="https://via.placeholder.com/600x400.png?text=YouTube+Keynote" alt="YouTube Keynote">
-              <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
-              <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
+                <iframe src="https://www.youtube.com/embed/gTGAQfIrZGg?si=UMhqyeRj6ZctUwlf" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <h3>Keynote Event</h3>
-            <p>Organized a guest lecture featuring Vinod Khosla, available on YouTube.</p>
+            <h3>NYT bird presentation</h3>
+            <p>NYT Event</p>
             <a href="https://www.youtube.com/watch?v=gTGAQfIrZGg" target="_blank">Watch Video</a>
-          </div>
-          <div class="card" data-images='[
-            "https://via.placeholder.com/600x400.png?text=NYT+Annotated"
-          ]'>
+          </div> -->
+          <div class="card">
             <div class="card-image-container">
-              <img src="https://via.placeholder.com/600x400.png?text=NYT+Annotated" alt="NYT Annotated">
-              <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
-              <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
+              <img src="nyt_2.jpeg" alt="NYT Annotated">
             </div>
-            <h3>Annotated Feature</h3>
-            <p>An insightful commentary in The New York Times on "Collar the Cat".</p>
+            <h3>NYT article followup</h3>
+            <p>I provide additional commentary to The New York Times on "Collar the Cat".</p>
             <a href="https://www.nytimes.com/2021/02/10/learning/annotated-by-the-author-collar-the-cat.html" target="_blank">Read Article</a>
           </div>
-          <div class="card" data-images='[
-            "https://via.placeholder.com/600x400.png?text=YouTube+Presentation"
-          ]'>
+          <div class="card">
             <div class="card-image-container">
-              <img src="https://via.placeholder.com/600x400.png?text=YouTube+Presentation" alt="YouTube Presentation">
-              <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
-              <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
+              <img src="bird_sign.jpeg" alt="Bird Habitat">
             </div>
-            <h3>Innovative Presentation</h3>
-            <p>Featured in a dynamic YouTube presentation demonstrating cutting‑edge innovation.</p>
-            <a href="https://www.youtube.com/watch?v=v2Ka_khLo9c" target="_blank">Watch Video</a>
-          </div>
-          <div class="card" data-images='[
-            "https://via.placeholder.com/600x400.png?text=Tom%27s+Guide"
-          ]'>
-            <div class="card-image-container">
-              <img src="https://via.placeholder.com/600x400.png?text=Tom%27s+Guide" alt="Tom's Guide">
-              <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
-              <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
-            </div>
-            <h3>AirPods Innovation</h3>
-            <p>Highlighted by Tom's Guide for breakthroughs in noise cancellation for phone calls.</p>
-            <a href="https://www.tomsguide.com/audio/apple-airpods-finally-have-a-way-to-remove-background-noise-from-your-phone-calls-heres-how" target="_blank">Learn More</a>
-          </div>
-          <div class="card" data-images='[
-            "https://via.placeholder.com/600x400.png?text=Bird+Habitat"
-          ]'>
-            <div class="card-image-container">
-              <img src="https://via.placeholder.com/600x400.png?text=Bird+Habitat" alt="Bird Habitat">
-              <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
-              <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
-            </div>
-            <h3>Community Impact</h3>
-            <p>Contributed to creating a bird habitat initiative featured in Sugar Land news.</p>
+            <h3>Eagle Scout Project</h3>
+            <p>Contributed to creating a bird habitat initiative featured in the Houston Chronicle.</p>
             <a href="https://www.chron.com/neighborhood/sugarland/news/article/Sugar-Land-Scout-creates-bird-habitat-15029554.php" target="_blank">Read More</a>
           </div>
         </div>
@@ -550,8 +590,52 @@
       <p>© 2025 Abel John. All Rights Reserved.</p>
     </footer>
   </div>
-
+  <!-- Modal Overlay for Expanded Media -->
+  <div id="media-modal" class="media-modal">
+    <button id="modal-close" class="modal-close">×</button>
+    <button id="modal-prev" class="modal-arrow modal-arrow-left">⟨</button>
+    <div class="modal-content"></div>
+    <button id="modal-next" class="modal-arrow modal-arrow-right">⟩</button>
+  </div>
   <script>
+    function scrollSlider(btn, direction) {
+        const sliderContainer = btn.closest('.slider-container');
+        const slider = sliderContainer.querySelector('.slider');
+        const scrollAmount = sliderContainer.offsetWidth; // Adjust as needed
+        slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        // Update the visibility of the left/right arrows based on scroll position
+        function updateSliderArrows(sliderContainer) {
+        const slider = sliderContainer.querySelector('.slider');
+        const leftArrow = sliderContainer.querySelector('.arrow-left');
+        const rightArrow = sliderContainer.querySelector('.arrow-right');
+        
+        // If slider is at the very left, hide the left arrow
+        if (slider.scrollLeft <= 0) {
+            leftArrow.style.display = 'none';
+        } else {
+            leftArrow.style.display = 'flex'; // or 'block' depending on your CSS
+        }
+        
+        // If slider is scrolled all the way to the right, hide the right arrow
+        if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 1) {
+            rightArrow.style.display = 'none';
+        } else {
+            rightArrow.style.display = 'flex';
+        }
+        }
+
+        // Set up event listeners for each slider container to update arrows on scroll
+        document.querySelectorAll('.slider-container').forEach(container => {
+        const slider = container.querySelector('.slider');
+        
+        // Update arrow visibility whenever the slider scrolls
+        slider.addEventListener('scroll', () => updateSliderArrows(container));
+        
+        // Also call it on load to set the correct initial state
+        updateSliderArrows(container);
+    });
     // Smooth scroll within the content container
     function scrollToSection(id) {
       const container = document.getElementById('content-container');
@@ -583,22 +667,66 @@
       cycleCardImage(btn, 1);
     }
     function cycleCardImage(btn, direction) {
-      const card = btn.closest('.card');
-      const imgContainer = card.querySelector('.card-image-container img');
-      let images = card.getAttribute('data-images');
-      images = JSON.parse(images);
-      if (card.currentIndex === undefined) {
-        card.currentIndex = 0;
+        const card = btn.closest('.card');
+        const container = card.querySelector('.card-image-container');
+        let images = JSON.parse(card.getAttribute('data-images'));
+        
+        // Set or update the current index
+        if (card.currentIndex === undefined) {
+            card.currentIndex = 0;
+        }
+        let newIndex = card.currentIndex + direction;
+        if (newIndex < 0) {
+            newIndex = images.length - 1;
+        }
+        if (newIndex >= images.length) {
+            newIndex = 0;
+        }
+
+        // Get the current image element.
+        const currentImg = container.querySelector('img');
+        
+        // Create a new image element for the sliding transition.
+        const newImg = document.createElement('img');
+        newImg.src = images[newIndex];
+        
+        // Ensure both images fill the container
+        [newImg, currentImg].forEach(img => {
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'cover';
+            img.style.borderRadius = '6px';
+        });
+        
+        // Set up the new image to slide in from the right (for next) or left (for previous)
+        newImg.style.position = 'absolute';
+        newImg.style.top = '0';
+        newImg.style.left = (direction > 0) ? '100%' : '-100%';
+        newImg.style.transition = 'left 0.5s ease';
+
+        // Make sure the current image is absolutely positioned
+        currentImg.style.position = 'absolute';
+        currentImg.style.top = '0';
+        currentImg.style.left = '0';
+        currentImg.style.transition = 'left 0.5s ease';
+
+        // Append the new image to the container.
+        container.appendChild(newImg);
+
+        // Force a reflow to ensure the starting position is applied.
+        newImg.offsetWidth;
+
+        // Start the slide: new image slides in while current slides out.
+        newImg.style.left = '0';
+        currentImg.style.left = (direction > 0) ? '-100%' : '100%';
+
+        // Once the transition ends, remove the old image.
+        newImg.addEventListener('transitionend', () => {
+            currentImg.remove();
+        }, { once: true });
+        
+        card.currentIndex = newIndex;
       }
-      card.currentIndex += direction;
-      if (card.currentIndex < 0) {
-        card.currentIndex = images.length - 1;
-      }
-      if (card.currentIndex >= images.length) {
-        card.currentIndex = 0;
-      }
-      imgContainer.src = images[card.currentIndex];
-    }
 
     // On DOM load, set up permanent stars and hide single-image arrows
     window.addEventListener('DOMContentLoaded', () => {
@@ -624,6 +752,146 @@
         }
       });
     });
+    // Global variables to track the modal’s state
+let currentModalImages = [];
+let currentModalIndex = 0;
+let currentModalTag = 'img'; // default media type
+
+// Helper: Create a media element based on its source and tag type
+function createMediaElementFromSource(src, tag) {
+  if (tag === 'iframe') {
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.frameBorder = "0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.objectFit = 'contain';
+    return iframe;
+  } else if (tag === 'video' || src.match(/\.(mov|mp4)$/i)) {
+    const video = document.createElement('video');
+    video.src = src;
+    video.controls = true;
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.objectFit = 'contain';
+    return video;
+  } else {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'contain';
+    return img;
+  }
+}
+
+// Open the modal when a media element is clicked
+function openModal(e) {
+  e.stopPropagation();
+  const el = e.currentTarget;
+  const card = el.closest('.card');
+  // Try to read the card's data-images attribute
+  let data = card.getAttribute('data-images');
+  if (data) {
+    try {
+      currentModalImages = JSON.parse(data);
+    } catch (err) {
+      currentModalImages = [];
+    }
+  } else {
+    // Fallback: use the clicked element's src
+    currentModalImages = [el.src];
+  }
+  // Set the media type (e.g., img, video, iframe)
+  currentModalTag = el.tagName.toLowerCase();
+  // Determine the index of the clicked media in the array
+  let index = currentModalImages.indexOf(el.src);
+  if (index === -1) index = 0;
+  currentModalIndex = index;
+  // Show the modal overlay
+  const modal = document.getElementById('media-modal');
+  modal.classList.add('active');
+  // Set the initial modal content without a slide animation
+  updateModalContent(0, true);
+  updateModalArrowsModal();
+}
+
+// Update the modal's media content with a sliding transition
+// direction: 1 for next, -1 for previous, 0 for initial load
+// immediate: if true, no slide animation (for initial load)
+function updateModalContent(direction, immediate = false) {
+  const modalContent = document.querySelector('.modal-content');
+  const oldMedia = modalContent.querySelector('img, video, iframe');
+  const newMedia = createMediaElementFromSource(currentModalImages[currentModalIndex], currentModalTag);
+  newMedia.style.position = 'absolute';
+  newMedia.style.top = '0';
+  // Start new media off-screen if sliding (unless immediate or direction is 0)
+  newMedia.style.left = (direction > 0 ? '100%' : (direction < 0 ? '-100%' : '0'));
+  newMedia.style.transition = immediate ? 'none' : 'left 0.5s ease';
+  modalContent.appendChild(newMedia);
+
+  if (!immediate && oldMedia) {
+    // Force reflow to register the starting position
+    newMedia.offsetWidth;
+    // Slide new media into place
+    newMedia.style.left = '0';
+    // Slide the old media out
+    oldMedia.style.position = 'absolute';
+    oldMedia.style.left = (direction > 0 ? '-100%' : (direction < 0 ? '100%' : '0'));
+    oldMedia.style.transition = 'left 0.5s ease';
+    oldMedia.addEventListener('transitionend', () => {
+      if (oldMedia.parentNode) {
+        oldMedia.remove();
+      }
+    }, { once: true });
+  } else {
+    if (oldMedia) {
+      oldMedia.remove();
+    }
+    newMedia.style.left = '0';
+  }
+}
+    function modalCycleImage(direction) {
+    if (currentModalImages.length <= 1) return;
+    currentModalIndex += direction;
+    if (currentModalIndex < 0) currentModalIndex = currentModalImages.length - 1;
+    if (currentModalIndex >= currentModalImages.length) currentModalIndex = 0;
+    updateModalContent(direction);
+    updateModalArrowsModal();
+    }
+
+    function updateModalArrowsModal() {
+    const prevArrow = document.getElementById('modal-prev');
+    const nextArrow = document.getElementById('modal-next');
+    if (currentModalImages.length <= 1) {
+        prevArrow.style.display = 'none';
+        nextArrow.style.display = 'none';
+    } else {
+        prevArrow.style.display = 'flex';
+        nextArrow.style.display = 'flex';
+    }
+    }
+
+    function closeModal() {
+    const modal = document.getElementById('media-modal');
+    modal.classList.remove('active');
+    // Optionally clear out the modal content
+    document.querySelector('.modal-content').innerHTML = '';
+    }
+
+    // Attach event listeners to card media elements (images, videos, iframes)
+    document.querySelectorAll('.card-image-container img, .card-image-container video, .card-image-container iframe')
+    .forEach(el => {
+        el.style.cursor = 'pointer'; // indicate clickability
+        el.addEventListener('click', openModal);
+    });
+
+    // Attach event listeners for modal controls
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-prev').addEventListener('click', () => modalCycleImage(-1));
+    document.getElementById('modal-next').addEventListener('click', () => modalCycleImage(1));
   </script>
 </body>
 </html>
