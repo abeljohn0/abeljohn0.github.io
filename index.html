@@ -68,7 +68,6 @@
     /* Vertically scrolling content container with transparency */
     #content-container {
       position: relative;
-      z-index: 1;
       width: 90%;
       max-width: 1200px;
       height: 100vh;
@@ -227,12 +226,12 @@
       padding: 20px;
       width: 300px;
       flex: 0 0 auto; /* So it doesn't shrink */
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative; /* so we can place arrow buttons for images */
     }
-    .card:hover {
+    /* .card:hover {
       transform: translateY(-5px);
-    }
+    } */
 
     /* Mini-carousel for multiple images within a card */
     .card-image-container {
@@ -357,6 +356,51 @@
     .modal-arrow-right {
     right: 20px;
     }
+    .stack-container {
+        position: relative;
+        width: 300px;     
+        height: 400px;     
+        margin: 0 auto;
+        z-index: 100;
+        /* margin-right: 20px;  */
+    }
+
+    .stack-container .card {
+        transition: transform 0.5s ease, margin-left 0.5s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Stack the cards on the z-axis with a slight horizontal offset */
+    /* #card1 {
+    z-index: 3;
+    }
+
+    #card2 {
+    z-index: 2;
+    }
+
+    #card3 {
+    z-index: 1;
+    } */
+
+    /* Optional: When a card is clicked or hovered, bring it to the front */
+    /* .stack-container .card:nth-child(2):hover,
+    .stack-container .card:nth-child(3):hover {
+        transform: translateX(40px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    } */
+/* 
+    .stack-container .card.rotate {
+        z-index: 4 !important;
+        box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    } */
   </style>
 </head>
 <body>
@@ -364,8 +408,8 @@
   <div id="shooting-stars"></div>
 
   <!-- Vertically Scrolling Content Container -->
-  <div id="content-container">
-    <header>
+  <div id="content-container" >
+    <header zIndex="1000">
       <h1>Abel John</h1>
       <nav>
         <ul>
@@ -385,7 +429,7 @@
           <br><br>
           As an intern on the Incubation team at Apple, I worked on a feature that shipped in iOS 18 and developed an award-winning app within the digital wellbeing space. Last spring, I received VC funding to explore other moonshot ideas.
           <br><br>
-          In my free time, I enjoy playing basketball with friends and listening to the "How I Built This by Guy Raz".
+          In my free time, I enjoy playing basketball with friends and listening to the "How I Built This" podcast by Guy Raz.
           <br><br>
           You can reach me via email at <strong>abeljohn (at) stanford (dot) edu</strong>.
         </p>
@@ -402,29 +446,25 @@
       <div class="slider-container">
         <!-- Left arrow for entire slider -->
         <button class="slider-arrow arrow-left" onclick="scrollSlider(this, -1)">⟨</button>
-        
         <div class="slider">
+        <div class="stack-container">
           <!-- Example card with multiple images inside -->
-          <div class="card" data-images='[
-            "craig.png",
-            "exit.jpg",
-            "walk_on_water.MOV"
+          <div class="card"  id="card1" data-images='[
+              "craig.png",
+              "exit.jpg"
           ]'>
             <div class="card-image-container">
               <img src="craig.png" alt="Apple Incubation">
-              <video src="walk_on_water.mov" alt="passive video" muted autoplay loop playsinline></video>
               <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
               <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
             </div>
-            <h3>Apple - Incubation Intern</h3>
+            <h3>Apple - Incubation Intern S24</h3>
             <p>
               Prototyped a new approach to digital wellbeing for iOS. 
               My final presentation was showcased to top executives including SVP Craig Federighi.
             </p>
           </div>
-
-          <!-- Example card with single image -->
-          <div class="card" data-images='[
+          <div class="card"  id="card2" data-images='[
             "rainbow.jpg",
             "nametag.jpg",
             "VPG.jpg"
@@ -434,12 +474,12 @@
               <button class="card-img-arrow card-img-arrow-left" onclick="prevCardImage(this)">⟨</button>
               <button class="card-img-arrow card-img-arrow-right" onclick="nextCardImage(this)">⟩</button>
             </div>
-            <h3>Apple - Input Experience Intern</h3>
+            <h3>Apple - IX Intern S23</h3>
             <p>
               Developed the first prototype of the head gesture features for AirPods; feature debuted in iOS 18.
             </p>
           </div>
-
+        </div>
           <div class="card" data-images='[
             "UV.jpeg"
           ]'>
@@ -545,31 +585,16 @@
             <p>Highlighted by Tom's Guide for new ways of interfacing with the airpods.</p>
             <a href="https://www.tomsguide.com/audio/apple-airpods-finally-have-a-way-to-remove-background-noise-from-your-phone-calls-heres-how" target="_blank">Learn More</a>
           </div>
-          <div class="card">
-            <div class="card-image-container">
-                <iframe src="https://www.youtube.com/embed/v2Ka_khLo9c?si=wAdE4fwp0ni4kPuy" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <h3>Vinod Khosla Fireside Chat</h3>
-            <p>A fireside chat I hosted at the GSB.</p>
-            <a href="https://www.youtube.com/watch?v=v2Ka_khLo9c" target="_blank">Watch Video</a>
-          </div>
-          <div class="card">
-            <div class="card-image-container">
-              <img src="nyt_1.jpeg" alt="NYT Article">
-            </div>
-            <h3>NYT Published Author</h3>
-            <p>Featured in The New York Times for "Collar the Cat".</p>
-            <a href="https://www.nytimes.com/2020/06/17/learning/collar-the-cat.html" target="_blank">Read Article</a>
-          </div>
-          <!-- <div class="card">
-            <div class="card-image-container">
-                <iframe src="https://www.youtube.com/embed/gTGAQfIrZGg?si=UMhqyeRj6ZctUwlf" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <h3>NYT bird presentation</h3>
-            <p>NYT Event</p>
-            <a href="https://www.youtube.com/watch?v=gTGAQfIrZGg" target="_blank">Watch Video</a>
-          </div> -->
-          <div class="card">
+          <div class="stack-container">
+            <div class="card">
+                <div class="card-image-container">
+                  <img src="nyt_1.jpeg" alt="NYT Article">
+                </div>
+                <h3>NYT Published Author</h3>
+                <p>Featured in The New York Times for "Collar the Cat".</p>
+                <a href="https://www.nytimes.com/2020/06/17/learning/collar-the-cat.html" target="_blank">Read Article</a>
+              </div>
+            <div class="card">
             <div class="card-image-container">
               <img src="nyt_2.jpeg" alt="NYT Annotated">
             </div>
@@ -585,10 +610,26 @@
             <p>Contributed to creating a bird habitat initiative featured in the Houston Chronicle.</p>
             <a href="https://www.chron.com/neighborhood/sugarland/news/article/Sugar-Land-Scout-creates-bird-habitat-15029554.php" target="_blank">Read More</a>
           </div>
-        </div>
-
+          </div>
+          <div class="card">
+            <div class="card-image-container">
+                <iframe src="https://www.youtube.com/embed/v2Ka_khLo9c?si=wAdE4fwp0ni4kPuy" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>Vinod Khosla Fireside Chat</h3>
+            <p>A fireside chat I hosted at the GSB.</p>
+            <a href="https://www.youtube.com/watch?v=v2Ka_khLo9c" target="_blank">Watch Video</a>
+          </div>
+          <!-- <div class="card">
+            <div class="card-image-container">
+                <iframe src="https://www.youtube.com/embed/gTGAQfIrZGg?si=UMhqyeRj6ZctUwlf" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h3>NYT bird presentation</h3>
+            <p>NYT Event</p>
+            <a href="https://www.youtube.com/watch?v=gTGAQfIrZGg" target="_blank">Watch Video</a>
+          </div> -->
         <button class="slider-arrow arrow-right" onclick="scrollSlider(this, 1)">⟩</button>
       </div>
+    </div>
     </section>
 
     <!-- Footer -->
@@ -898,6 +939,77 @@ function updateModalContent(direction, immediate = false) {
     document.getElementById('modal-close').addEventListener('click', closeModal);
     document.getElementById('modal-prev').addEventListener('click', () => modalCycleImage(-1));
     document.getElementById('modal-next').addEventListener('click', () => modalCycleImage(1));
+    document.querySelectorAll('.stack-container').forEach(stackContainer => {
+  let cards = Array.from(stackContainer.querySelectorAll('.card'));
+
+  // Update the positions and z-index for the cards in this container.
+  function updateStackPositions(newOrder) {
+  cards = newOrder;
+  let zIndex = 10;
+  
+  newOrder.forEach((card, i) => {
+    card.style.zIndex = zIndex - i;
+    
+    // Option 1: Apply a staggered update with a delay.
+    setTimeout(() => {
+    //   card.style.transition = 'transform 0.5s ease, margin-left 0.5s ease;e';
+      card.style.marginLeft = `${i * 10}px`;
+    }, i * 50); // each card's update is delayed by an additional 100ms
+  });
+}
+
+  // When a card is clicked, rotate it to the top.
+  cards.forEach(card => {
+    card.addEventListener('click', function () {
+      if (cards.indexOf(this) === 0) return; // already on top
+      
+      const currentOrder = Array.from(stackContainer.querySelectorAll('.card'));
+      const clickedIndex = currentOrder.indexOf(this);
+      const newOrder = currentOrder.slice(clickedIndex).concat(currentOrder.slice(0, clickedIndex));
+      newOrder.forEach(card => stackContainer.appendChild(card));
+    // newOrder.forEach(card => {
+    //     card.style.transform = '';
+    //     card.style.boxShadow = '';
+    // });
+    updateStackPositions(newOrder);
+    });
+
+
+    // On mouse enter, apply an incremental X-offset.
+    card.addEventListener('mouseenter', function () {
+      if (cards.indexOf(this) === 0) return;
+      
+      let group = [this];
+      let sibling = this;
+      while (sibling) {
+        group.push(sibling);
+        sibling = sibling.nextElementSibling;
+      }
+      group.forEach((item, index) => {
+        item.style.transform = `translateX(${index * 50}px)`;
+        item.style.boxShadow = '0 6px 10px rgba(0, 0, 0, 0.2)';
+      });
+    });
+
+    // Reset the transform on mouse leave.
+    card.addEventListener('mouseleave', function () {
+      let group = [this];
+      let sibling = this;
+      while (sibling) {
+        group.push(sibling);
+        sibling = sibling.nextElementSibling;
+      }
+      group.forEach(item => {
+        item.style.transform = '';
+        item.style.boxShadow = '';
+      });
+    });
+  });
+
+  // Initialize the positions.
+  updateStackPositions(cards);
+  });
+
   </script>
 </body>
 </html>
